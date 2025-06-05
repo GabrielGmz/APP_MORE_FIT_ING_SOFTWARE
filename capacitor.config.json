@@ -1,0 +1,11 @@
+{
+  "appId": "com.example.morefit",
+  "appName": "more-fit",
+  "webDir": "dist",
+  "plugins": {
+    "CapacitorSQLite": {
+      "iosDatabaseLocation": "Library/CapacitorDatabase",
+      "androidIsEncryption": false
+    }
+  }
+}

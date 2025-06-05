@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "519284430657",
+    "project_id": "more-fit01",
+    "storage_bucket": "more-fit01.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:519284430657:android:f05f7155811dacb2cbb3c0",
+        "android_client_info": {
+          "package_name": "com.example.morefit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALWoCTkNx7MsIECkb6uB5Qbc50fOzaZGY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
