@@ -49,6 +49,24 @@ const handleSubmit = async () => {
       email: email.value,
       creado: new Date()
     })
+
+    const successMsg = document.createElement('div')
+    successMsg.textContent = '¡Registro exitoso! Por favor verifica tu cuenta.'
+    successMsg.style.position = 'fixed'
+    successMsg.style.top = '30px'
+    successMsg.style.left = '50%'
+    successMsg.style.transform = 'translateX(-50%)'
+    successMsg.style.background = '#008CFF'
+    successMsg.style.color = '#fff'
+    successMsg.style.padding = '16px 32px'
+    successMsg.style.borderRadius = '8px'
+    successMsg.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)'
+    successMsg.style.fontWeight = 'bold'
+    successMsg.style.zIndex = '9999'
+    document.body.appendChild(successMsg)
+    setTimeout(() => {
+      document.body.removeChild(successMsg)
+    }, 3000)
     router.push('/verificacion')
 
     username.value = ''

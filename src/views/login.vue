@@ -30,7 +30,8 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { signInWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../firebase'
+import { auth, db } from '@/firebase'
+import { doc, getDoc } from 'firebase/firestore'
 
 const email = ref('')
 const password = ref('')
@@ -48,8 +49,43 @@ const login = async () => {
       return
     }
 
-    alert('Inicio de sesión exitoso ✅')
-    router.push('./perfil')
+    const docRef = doc(db, 'usuarios', user.uid)
+    const docSnap = await getDoc(docRef)
+
+    error.value = null
+    const successMsg = document.createElement('div')
+    successMsg.textContent = 'Inicio de sesión exitoso ✅'
+    successMsg.style.position = 'fixed'
+    successMsg.style.top = '30px'
+    successMsg.style.left = '50%'
+    successMsg.style.transform = 'translateX(-50%)'
+    successMsg.style.background = '#008CFF'
+    successMsg.style.color = '#fff'
+    successMsg.style.padding = '16px 32px'
+    successMsg.style.borderRadius = '8px'
+    successMsg.style.fontWeight = 'bold'
+    successMsg.style.fontSize = '18px'
+    successMsg.style.zIndex = '9999'
+    document.body.appendChild(successMsg)
+    setTimeout(() => {
+      document.body.removeChild(successMsg)
+    }, 1300)
+
+    if (docSnap.exists()) {
+      const perfil = docSnap.data()
+
+      const camposCompletos = perfil.nombre && perfil.apellido && perfil.edad && perfil.altura && perfil.peso && perfil.sexo
+
+      if (camposCompletos) {
+        router.push('/PantallaPrincipal')
+      } else {
+        router.push('/perfil')
+      }
+
+    } else {
+      router.push('/perfil')
+    }
+
   } catch (err) {
     if (err.code === 'auth/user-not-found') {
       error.value = 'Usuario no encontrado'
@@ -60,6 +96,7 @@ const login = async () => {
     }
   }
 }
+
 </script>
 
 
@@ -173,4 +210,5 @@ button:hover {
 .register-link > a:hover {
     color: #000000;
 }
+
 </style>
