@@ -1,53 +1,65 @@
 <template>
     <div class="view_recuperacion">
-    <h1> + FIT </h1>
-    <div class="recuperacion-container">
-        <h2>RECUPERAR CONTRASEÑA</h2>
-        <form @submit.prevent="enviarRecuperacion">
-            <div class="form_group">
-            <label for="email">CORREO ELECTRÓNICO</label>
-            <input
-                type="email"
-                id="email"
-                v-model="email"
-                required
-            />
-            </div>
-            <p>ENVIAREMOS UN CODIGO DE VERIFICACIÓN A SU CORREO ELECTRONICO PARA
- REESTABLECER LA CONTRASEÑA</p>
-            <button type="submit">ENVIAR CÓDIGO DE RECUPERACIÓN</button>
-            <p v-if="mensaje" :class="{ exito: exito, error: !exito }">{{ mensaje }}</p>
-        </form>
-    </div>
+        <h1>+ FIT</h1>
+        <div class="recuperacion-container">
+            <h2>RECUPERAR CONTRASEÑA</h2>
+            <form @submit.prevent="enviarRecuperacion">
+                <div class="form_group">
+                    <label for="email">CORREO ELECTRÓNICO</label>
+                    <input type="email" id="email" v-model="email" required />
+                </div>
+                <p>
+                    ENVIAREMOS UN ENLACE A SU CORREO PARA
+                    REESTABLECER LA CONTRASEÑA
+                </p>
+                <button type="submit">ENVIAR ENLACE DE RECUPERACIÓN</button>
+                <p v-if="mensaje" :class="{ exito: exito, error: !exito }">{{ mensaje }}</p>
+            </form>
+        </div>
     </div>
 </template>
 
 <script>
+import { getAuth, sendPasswordResetEmail } from 'firebase/auth'
+
 export default {
-    name: "Recuperacion",
+    name: 'Recuperacion',
     data() {
         return {
-            email: "",
-            mensaje: "",
+            email: '',
+            mensaje: '',
             exito: false,
-        };
+        }
     },
     methods: {
         async enviarRecuperacion() {
-            // Simulación de envío de recuperación
-            if (this.email) {
-                // Aquí iría la llamada a la API real
-                this.mensaje = "Si el correo existe, recibirás un enlace de recuperación.";
-                this.exito = true;
-                this.email = "";
-            } else {
-                this.mensaje = "Por favor, ingresa un correo válido.";
-                this.exito = false;
+            const auth = getAuth()
+            const actionCodeSettings = {
+                url: 'http://localhost:5173/Nueva_Pass',
+                handleCodeInApp: true
             }
-        },
+
+            try {
+                await sendPasswordResetEmail(auth, this.email, actionCodeSettings)
+                this.$router.push('/P_Espera')
+
+                this.mensaje = 'Revisa tu correo para restablecer tu contraseña.'
+                this.exito = true
+                this.email = ''
+            } catch (error) {
+                console.error(error)
+        if (error.code === 'auth/user-not-found') {
+          this.mensaje = 'El correo ingresado no está registrado.'
+        } else {
+          this.mensaje = 'Error al enviar el correo de recuperación.'
+        }
+        this.exito = false
+      }
     },
-};
+  },
+}
 </script>
+
 
 <style scoped>
 .view_recuperacion {
@@ -67,9 +79,15 @@ export default {
     margin: 60px auto;
     padding: 2rem;
     border-radius: 8px;
-    background: #ffffff40;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    height: 350px;
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 350px;
+    margin: 0 auto;
     color: white;
     backdrop-filter: blur(2px);
 }
@@ -87,15 +105,18 @@ h2 {
     margin-bottom: 1.5rem;
     font-weight: bold;
 }
+
 .form_group {
     margin-top: 30px;
 }
+
 label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: bold;
     font-size: 15px;
 }
+
 input[type="email"] {
     width: 100%;
     padding: 0.5rem;
@@ -106,6 +127,7 @@ input[type="email"] {
     font-size: 1rem;
     margin-bottom: 20px;
 }
+
 p {
     text-align: center;
     font-size: 0.9rem;
@@ -113,10 +135,11 @@ p {
     margin-top: 10px;
     margin-bottom: 20px;
 }
+
 button {
     width: 100%;
     padding: 0.7rem;
-    background-color: #000000;
+    background-color: #008CFF;
     color: #fff;
     border: none;
     font-size: 1rem;
@@ -131,14 +154,16 @@ button {
     display: flex;
 }
 button:hover {
-    background: #008CFF;
+    background: #000000;
 }
 .exito {
-    color: #388e3c;
-    margin-top: 1rem;
+  color: green;
+  font-weight: bold;
+  margin-top: 1rem;
 }
 .error {
-    color: #d32f2f;
-    margin-top: 1rem;
+  color: red;
+  font-weight: bold;
+  margin-top: 1rem;
 }
 </style>
