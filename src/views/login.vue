@@ -79,11 +79,11 @@ const login = async () => {
       if (camposCompletos) {
         router.push('/PantallaPrincipal')
       } else {
-        router.push('/perfil')
+        router.push('/Completar_P')
       }
 
     } else {
-      router.push('/perfil')
+      router.push('/Completar_P')
     }
 
   } catch (err) {
