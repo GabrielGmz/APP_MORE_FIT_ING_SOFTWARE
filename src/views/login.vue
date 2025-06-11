@@ -103,112 +103,119 @@ const login = async () => {
 
 <style scoped>
 .viewlogin {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-image: url("@/assets/Fondo_Gym.jpeg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url("@/assets/Fondo_Gym.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .login-container {
-    max-width: 260px;
-    margin: 80px auto;
-    padding: 2rem;
-    border-radius: 8px;
-    background-color: #ffffff40;
-    color: white;
-    height: auto;
-    backdrop-filter: blur(2px);
+  max-width: 260px;
+  margin: 80px auto;
+  padding: 2rem;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  height: auto;
+  backdrop-filter: blur(2px);
 }
+
 h1 {
-    text-align: center;
-    font-size: 55px;
-    color: #008CFF;
-    font-weight: 900;
-    padding-top: 60px;
+  text-align: center;
+  font-size: 55px;
+  color: #008CFF;
+  font-weight: 900;
+  padding-top: 60px;
 }
+
 .form-group {
-    margin-top: 35px;
+  margin-top: 35px;
 }
+
 label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-    font-size: 15px;
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 15px;
 }
+
 input[type="email"],
 input[type="password"] {
-    width: 100%;
-    padding: 0.5rem;
-    box-sizing: border-box;
-    border-radius: 23px;
-    background-color: #D9D9D9;
-    border: 1px solid #ccc;
-    font-size: 1rem;
+  width: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border-radius: 23px;
+  background-color: #D9D9D9;
+  border: 1px solid #ccc;
+  font-size: 1rem;
 }
+
 button {
-    width: 100%;
-    padding: 0.7rem;
-    background-color: #000000;
-    color: #fff;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 20px;
-    max-width: 170px;
-    margin: 0 auto;
-    transition: background 0.3s ease;
-    font-weight: bold;
-    font-size: 15px;
-    justify-content: center;
-    display: flex;
+  width: 100%;
+  padding: 0.7rem;
+  background-color: #008CFF;
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 20px;
+  max-width: 170px;
+  margin: 0 auto;
+  transition: background 0.3s ease;
+  font-weight: bold;
+  font-size: 15px;
+  justify-content: center;
+  display: flex;
 }
+
 button:hover {
-    background: #008CFF;
+  background: #000000;
 }
+
 .error {
-    color: #ff0000;
-    margin-top: 1rem;
-    text-align: center;
+  color: #ff0000;
+  margin-top: 1rem;
+  text-align: center;
 }
 
 .recovery-link {
-    text-align: right;
-    font-size: 12px;
-    font-weight: bold;
+  text-align: right;
+  font-size: 12px;
+  font-weight: bold;
 }
 
-.recovery-link > a {
-    color: #008CFF;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-weight: bold;
+.recovery-link>a {
+  color: #008CFF;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: bold;
 }
 
-.recovery-link > a:hover {
-    color: #000000;
+.recovery-link>a:hover {
+  color: #00fff7;
 }
 
 .register-link {
-    margin-top: 1rem;
-    text-align: center;
-    font-weight: bold;
-    font-size: 15px;
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
 }
 
-.register-link > a {
-    color: #008CFF;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-weight: bold;
+.register-link>a {
+  color: #008CFF;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: bold;
 }
 
-.register-link > a:hover {
-    color: #000000;
+.register-link>a:hover {
+  color: #00fff7;
 }
 
 </style>
