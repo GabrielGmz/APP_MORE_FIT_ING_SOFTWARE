@@ -99,7 +99,7 @@ const handleSubmit = async () => {
     margin: 80px auto;
     padding: 2rem;
     border-radius: 8px;
-    background-color: #ffffff40;
+    background-color: rgba(0, 0, 0, 0.7);
     color: white;
     height: auto;
     backdrop-filter: blur(2px);
@@ -141,7 +141,7 @@ input[type="password"] {
 button {
     width: 100%;
     padding: 0.7rem;
-    background-color: #000000;
+    background-color: #008CFF;
     color: #fff;
     border: none;
     font-size: 1rem;
@@ -156,7 +156,7 @@ button {
     display: flex;
 }
 button:hover {
-    background: #008CFF;
+    background: #000000;
 }
 .login-link {
     text-align: right;
@@ -171,6 +171,6 @@ button:hover {
     transition: all 0.3s ease;
 }
 .login-link a:hover {
-    color: #000000;
+    color: #00fff7;
 }
 </style>
