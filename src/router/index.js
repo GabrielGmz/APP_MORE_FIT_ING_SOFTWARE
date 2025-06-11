@@ -4,7 +4,7 @@ import LoginView from '../views/login.vue'
 import Signup from '@/views/signup.vue'
 import recuperacion from '@/views/Recuperacion/recuperacion.vue'
 import Verificacion from '@/views/Verificacion/verificacion.vue'
-import perfil from '@/views/Perfil/perfil.vue'
+import Completar_P from '@/views/Perfil/Completar_P.vue'
 import Objetivos from '@/views/Perfil/objetivos.vue'
 import PlanNutricion from '@/views/Perfil/planNutricion.vue'
 import Conocimiento from '@/views/Perfil/Conocimiento.vue'
@@ -13,6 +13,7 @@ import PlanCompleto from '@/views/Perfil/PlanCompleto.vue'
 import Entrenamiento from '@/views/Perfil/Entrenamiento.vue'
 import DiaPecho from '@/views/Perfil/DiaPecho.vue'
 import PantallaPrincipal from '@/views/Principal/PantallaPrincipal.vue'
+import Perfil_U from '@/views/Perfil/Perfil_U.vue'
 import Rutinas from '@/views/Principal/Rutinas.vue'
 
 const routes = [
@@ -21,8 +22,9 @@ const routes = [
   { path: '/signup', name: 'Signup', component: Signup },
   { path: '/verificacion', name: 'VerificacionCorreo', component: Verificacion},
   { path: '/recuperacion', name: 'Recuperacion', component: recuperacion },
-  { path: '/perfil', name: 'Perfil', component: perfil },
+  { path: '/Completar_P', name: 'CompletarPerfil', component: Completar_P },
   {path: '/pantallaPrincipal', name: 'PantallaPrincipal', component: PantallaPrincipal},
+  { path: '/Perfil_U', name: 'Perfil_U', component: Perfil_U },
   { path: '/rutinas', name: 'Rutinas', component: Rutinas },
   { path: '/objetivos', name: 'Objetivos', component: Objetivos},
   { path: '/planNutricion', name: 'planNutricion', component: PlanNutricion},
