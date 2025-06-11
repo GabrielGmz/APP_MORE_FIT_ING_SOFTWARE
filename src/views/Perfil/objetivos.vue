@@ -1,5 +1,8 @@
 <template>
     <div class="container">
+      <button @click="router.back()" class="btn-back">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 489 628"><path fill="" d="M489 65v563L0 347z"/></svg>
+      </button>
         <div class="form-container">
         <h2>CUAL ES TU OBJETIVO</h2>
         <div class="btn_objetivo">
@@ -12,10 +15,8 @@
             <button class="btn_objetivo_item" @click="objetivo = 'mantenerte en forma'" :class="{ activo: objetivo === 'mantenerte en forma' }">
                 <span>🏃‍♂️</span> MANTENERTE EN FORMA
             </button>
-            <button class="btn_objetivo_item" @click="objetivo = 'mejorar rendimiento'" :class="{ activo: objetivo === 'mejorar rendimiento' }">
-                <span>⚡</span> MEJORAR RENDIMIENTO
-            </button>
         </div>
+        <h4>RECUERDA PEDIR AYUDA A UN ENTRENADOR SI NO TE SIENTES SEGURO DE TU OBJETIVO</h4>
         <div class="btn_objetivo">
             <button class="btn_guardar_obj" @click="guardarObjetivo">SIGUIENTE</button>
         </div>
@@ -28,9 +29,12 @@ import { ref } from 'vue'
 import { db, auth } from '@/firebase'
 import { doc, updateDoc, onSnapshot } from 'firebase/firestore'
 import { onAuthStateChanged } from 'firebase/auth'
+import { setDoc } from 'firebase/firestore'
+import { useRouter } from 'vue-router'
 
 const objetivo = ref('')
 const userId = ref('')
+const router = useRouter()
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
@@ -58,14 +62,14 @@ async function guardarObjetivo() {
 
   try {
     const refUsuario = doc(db, 'usuarios', userId.value)
-    await updateDoc(refUsuario, { objetivo: objetivo.value })
-    alert('Objetivo guardado exitosamente')
-
+    await setDoc(refUsuario, { objetivo: objetivo.value }, { merge: true })
+    router.push('/planNutricion')
   } catch (error) {
     console.error('Error al guardar objetivo:', error)
     alert('Error al guardar el objetivo')
   }
 }
+
 </script>
 
 <style scoped>
@@ -91,7 +95,7 @@ async function guardarObjetivo() {
     height: auto;
     backdrop-filter: blur(2px);
 }
-h2 {
+h2, h4 {
   font-weight: bold;
   margin-bottom: 1.5rem;
   text-align: center;
@@ -116,11 +120,14 @@ h2 {
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: bold;
+    display: flex;
+    align-items: center;
 }
 .btn_objetivo_item span {
     font-size: 35px;
-    margin-right: 30px;
+    margin-right: 10px;
     vertical-align: middle;
+    align-content: center;
     display: inline-block;
     
 }
@@ -160,4 +167,22 @@ h2 {
 .btn_guardar_obj:hover {
     background: #000000;
 }
+.btn-back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.btn-back svg {
+    fill: white;
+    width: 36px;
+    height: 36px;
+    transition: fill 0.3s ease;
+  }
+.btn-back:hover svg {
+    fill: #008CFF;
+}
+
 </style>
