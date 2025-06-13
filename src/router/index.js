@@ -3,8 +3,6 @@ import Home from '../views/Home.vue'
 import LoginView from '../views/login.vue'
 import Signup from '@/views/signup.vue'
 import recuperacion from '@/views/Recuperacion/recuperacion.vue'
-import P_Espera from '@/views/Recuperacion/P_Espera.vue'
-import Nueva_Pass from '@/views/Recuperacion/Nueva_Pass.vue'
 import Verificacion from '@/views/Verificacion/verificacion.vue'
 import Completar_P from '@/views/Perfil/Completar_P.vue'
 import Objetivos from '@/views/Perfil/objetivos.vue'
@@ -29,8 +27,6 @@ const routes = [
   { path: '/signup', name: 'Signup', component: Signup },
   { path: '/verificacion', name: 'VerificacionCorreo', component: Verificacion},
   { path: '/recuperacion', name: 'Recuperacion', component: recuperacion },
-  { path: '/P_Espera', name: 'P_Espera', component: P_Espera },
-  { path: '/Nueva_Pass', name: 'Nueva_Pass', component: Nueva_Pass },
   { path: '/Completar_P', name: 'CompletarPerfil', component: Completar_P },
   { path: '/pantallaPrincipal', name: 'PantallaPrincipal', component: PantallaPrincipal},
   { path: '/Perfil_U', name: 'Perfil_U', component: Perfil_U },
