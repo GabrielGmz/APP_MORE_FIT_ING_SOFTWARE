@@ -3,7 +3,7 @@
     <div class="perfil-container">
       <h2>{{ esEdicion ? 'EDITAR PERFIL' : 'COMPLETA TU PERFIL' }}</h2>
 
-      <button v-if="esEdicion" @click="router.back()" class="btn-atras">← Volver</button>
+      <button v-if="esEdicion" @click="router.back()" class="btn-atras"> <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 489 628"><path fill="" d="M489 65v563L0 347z"/></svg></button>
 
       <form class="perfil-form" @submit.prevent="guardarPerfil">
         <div class="imagen-perfil">
@@ -37,10 +37,10 @@
           </div>
         </div>
         <div class="form-group">
-          <input type="number" placeholder="ALTURA" min="0" v-model="altura" />
+          <input type="number" placeholder="ALTURA (CM)" min="0" v-model="altura" />
         </div>
         <div class="form-group">
-          <input type="number" placeholder="PESO" min="0" v-model="peso" />
+          <input type="number" placeholder="PESO (KG)" min="0" v-model="peso" />
         </div>
         <button type="submit">{{ esEdicion ? 'GUARDAR CAMBIOS' : 'SIGUIENTE' }}</button>
       </form>
@@ -170,7 +170,7 @@ async function guardarPerfil() {
   max-width: 300px;
   padding: 2rem;
   border-radius: 20px;
-  background-color:#ffffff40;
+  background-color:rgba(0, 0, 0, 0.7);
   color: white;
   backdrop-filter: blur(2px);
   text-align: center;
@@ -289,5 +289,22 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #0056b3;
+}
+.btn-atras {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.btn-atras svg {
+  width: 36px;
+  height: 36px;
+  fill: white;
+  transition: all 0.3s ease;
+}
+.btn-atras:hover svg {
+  fill: #007bff;
 }
 </style>
