@@ -84,7 +84,7 @@ async function guardarObjetivo() {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-image: url("@/assets/Fondo_Gym.jpeg");
+  background-color: #000a12;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

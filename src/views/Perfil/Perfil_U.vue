@@ -11,8 +11,7 @@
                 <div class="info-perfil">
                     <img v-if="perfil.imagen" :src="perfil.imagen" alt="Foto de perfil" class="foto-perfil" />
 
-                    <p><strong>Nombres <br></strong> {{ perfil.nombre }}</p>
-                    <p><strong>Apellidos <br></strong> {{ perfil.apellido }}</p>
+                    <p><strong>Nombre<br></strong> {{ perfil.nombre + ' ' + perfil.apellido }}</p>
                     <p><strong>Edad <br></strong> {{ perfil.edad }} años</p>
                     <p><strong>Sexo <br></strong> {{ perfil.sexo }}</p>
                     <p><strong>Altura <br></strong> {{ perfil.altura }} cm</p>
@@ -29,15 +28,8 @@
         </div>
     </div>
     <nav class="bottom-nav">
-        <button class="nav-btn"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24">
-                <path fill="currentColor"
-                    d="M20 2H10a3 3 0 0 0-3 3v7a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3Zm1 10a1 1 0 0 1-1 1H10a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1Zm-3.5-4a1.49 1.49 0 0 0-1 .39a1.5 1.5 0 1 0 0 2.22a1.5 1.5 0 1 0 1-2.61ZM16 17a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4h1a1 1 0 0 0 0-2H3v-1a1 1 0 0 1 1-1a1 1 0 0 0 0-2a3 3 0 0 0-3 3v7a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1a1 1 0 0 0-1-1ZM6 18h1a1 1 0 0 0 0-2H6a1 1 0 0 0 0 2Z" />
-            </svg></button>
-        <button class="nav-btn" @click="$router.push('/Rutinas')"><svg xmlns="http://www.w3.org/2000/svg" width="34"
-                height="34" viewBox="0 0 24 24">
-                <path fill="currentColor"
-                    d="m20.975 9.025l-6.05-6.05l.425-.425q.575-.575 1.425-.563t1.425.588L21.425 5.8Q22 6.375 22 7.213t-.575 1.412l-.45.4ZM8.65 21.4q-.575.575-1.413.575T5.826 21.4L2.6 18.175q-.575-.575-.575-1.413T2.6 15.35l.4-.4L9.05 21l-.4.4Zm3.625-.7q-.3.3-.7.3t-.7-.3L3.3 13.125q-.3-.3-.3-.7t.3-.7l1.425-1.45q.3-.3.713-.3t.712.3l1.575 1.575l4.15-4.15L10.3 6.125q-.3-.3-.3-.7t.3-.7l1.425-1.45q.3-.3.713-.3t.712.3l7.575 7.575q.3.3.3.713t-.3.712l-1.45 1.425q-.3.3-.7.3t-.7-.3L16.3 12.125l-4.15 4.15l1.575 1.575q.3.3.3.712t-.3.713l-1.45 1.425Z" />
-            </svg></button>
+              <button class="nav-btn" @click="$router.push('/Gestion_U')"><svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="#000000"><path fill="#000000" fill-rule="evenodd" d="M8 4a4 4 0 1 0 0 8a4 4 0 0 0 0-8m-2 9a4 4 0 0 0-4 4v1c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4zm7.3-2a6 6 0 0 0 0-6A4 4 0 0 1 20 8a4 4 0 0 1-6.7 3m2.2 9a4 4 0 0 0 .5-2v-1a6 6 0 0 0-1.5-4H18a4 4 0 0 1 4 4v1a2 2 0 0 1-2 2z" clip-rule="evenodd"/></svg></button>
+      <button class="nav-btn" @click="$router.push('/Gestion_P')"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24"><path fill="currentColor" d="M20 2H10a3 3 0 0 0-3 3v7a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3Zm1 10a1 1 0 0 1-1 1H10a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1Zm-3.5-4a1.49 1.49 0 0 0-1 .39a1.5 1.5 0 1 0 0 2.22a1.5 1.5 0 1 0 1-2.61ZM16 17a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4h1a1 1 0 0 0 0-2H3v-1a1 1 0 0 1 1-1a1 1 0 0 0 0-2a3 3 0 0 0-3 3v7a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1a1 1 0 0 0-1-1ZM6 18h1a1 1 0 0 0 0-2H6a1 1 0 0 0 0 2Z"/></svg></button>
         <button class="nav-btn" @click="$router.push('/PantallaPrincipal')"><svg xmlns="http://www.w3.org/2000/svg"
                 width="34" height="34" viewBox="0 0 1024 1025">
                 <path fill="currentColor"
@@ -49,7 +41,7 @@
                     d="M5 8a4 4 0 1 1 7.8 1.3l-2.5 2.5A4 4 0 0 1 5 8m4 5H7a4 4 0 0 0-4 4v1c0 1.1.9 2 2 2h2.2a3 3 0 0 1-.1-1.6l.6-3.4a3 3 0 0 1 .9-1.5zm9-5a3 3 0 0 0-2 .9l-6 6a1 1 0 0 0-.3.5L9 18.8a1 1 0 0 0 1.2 1.2l3.4-.7c.2 0 .3-.1.5-.3l6-6a3 3 0 0 0-2-5Z"
                     clip-rule="evenodd" />
             </svg></button>
-        <button class="nav-btn"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="34" height="34"
+        <button class="nav-btn" @click="$router.push('/Configuracion')"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="34" height="34"
                 viewBox="0,0,256,256">
                 <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                     stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
@@ -94,7 +86,7 @@ onAuthStateChanged(auth, async (user) => {
 
 <style scoped>
 .container {
-    background-image: url('@/assets/Fondo_Gym.jpeg');
+    background-color: #000a12;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -110,7 +102,7 @@ onAuthStateChanged(auth, async (user) => {
 h2 {
     font-weight: bold;
     text-align: left;
-    color: #ffffff;
+     color: #008CFF;
     font-size: 1.6rem;
     margin-bottom: 1rem;
     font-weight: 900;

@@ -74,6 +74,18 @@ const login = async () => {
     if (docSnap.exists()) {
       const perfil = docSnap.data()
 
+      // Redirección según rol
+      if (perfil.rol === 'admin') {
+        router.push('/PantallaPrincipal')
+        return
+      } else if (perfil.rol === 'entrenador') {
+        router.push('/P_P_Entrenador')
+        return
+      } else if (!perfil.rol) {
+        router.push('/P_Principal_C')
+        return
+      }
+
       const camposCompletos = perfil.nombre && perfil.apellido && perfil.edad && perfil.altura && perfil.peso && perfil.sexo
 
       if (camposCompletos) {
@@ -108,7 +120,7 @@ const login = async () => {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-image: url("@/assets/Fondo_Gym.jpeg");
+  background-image: url('@/assets/Fondo_Gym.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

@@ -27,6 +27,7 @@
         <div class="form-group">
           <input type="text" placeholder="APELLIDO" v-model="apellido" />
         </div>
+        <input type="email" placeholder="EMAIL" v-model="email" disabled />
         <div class="form-group">
           <input type="number" placeholder="EDAD" min="0" v-model="edad" />
         </div>
@@ -57,6 +58,7 @@ import { useRouter } from 'vue-router'
 
 const nombre = ref('')
 const apellido = ref('')
+const email = ref(auth.currentUser ? auth.currentUser.email : '')
 const edad = ref('')
 const altura = ref('')
 const peso = ref('')
@@ -78,6 +80,7 @@ onAuthStateChanged(auth, async (user) => {
       const datos = docSnap.data()
       nombre.value = datos.nombre || ''
       apellido.value = datos.apellido || ''
+      email.value = datos.email || ''
       edad.value = datos.edad || ''
       altura.value = datos.altura || ''
       peso.value = datos.peso || ''
@@ -118,7 +121,7 @@ async function guardarPerfil() {
   }
 
   try {
-    await setDoc(doc(db, 'usuarios', userId.value), perfil)
+    await setDoc(doc(db, 'usuarios', userId.value), perfil, { merge: true })
     const alerta = document.createElement('div')
     alerta.textContent = 'Perfil guardado exitosamente'
     Object.assign(alerta.style, {
@@ -142,7 +145,11 @@ async function guardarPerfil() {
       setTimeout(() => document.body.removeChild(alerta), 500)
     }, 1800)
 
-    router.push('./PantallaPrincipal')
+    if (esEdicion.value) {
+      router.push('/Perfil_U')           // si estaba editando
+    } else {
+      router.push('/PantallaPrincipal')  // si era un nuevo perfil
+    }
   } catch (error) {
     console.error('Error al guardar el perfil:', error)
     alert('Error al guardar perfil')

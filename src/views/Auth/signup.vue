@@ -29,9 +29,9 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { auth, db } from '../firebase'
-import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth'
-import { collection, addDoc } from 'firebase/firestore'
+import { auth, db } from '../../firebase'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { doc, setDoc } from 'firebase/firestore'
 
 const username = ref('')
 const email = ref('')
@@ -43,7 +43,8 @@ const handleSubmit = async () => {
     const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value)
     const user = userCredential.user
 
-    await addDoc(collection(db, 'usuarios'), {
+    // 🔥 Aquí usamos setDoc en lugar de addDoc
+    await setDoc(doc(db, 'usuarios', user.uid), {
       uid: user.uid,
       nombre: username.value,
       email: email.value,
@@ -67,8 +68,10 @@ const handleSubmit = async () => {
     setTimeout(() => {
       document.body.removeChild(successMsg)
     }, 3000)
+
     router.push('/verificacion')
 
+    // limpiar campos
     username.value = ''
     email.value = ''
     password.value = ''

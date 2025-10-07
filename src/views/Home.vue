@@ -17,7 +17,7 @@
 <style scoped>
 #app {
   text-align: center;
-  background-image: url("@/assets/Fondo_Gym.jpeg");
+  background-image: url('@/assets/Fondo_Gym.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
