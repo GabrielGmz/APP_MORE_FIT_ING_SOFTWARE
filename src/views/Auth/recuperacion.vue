@@ -75,8 +75,6 @@ export default {
 
 .recuperacion-container {
     width: 100%;
-    max-width: 300px;
-    margin: 60px auto;
     padding: 2rem;
     border-radius: 8px;
     background: rgba(0, 0, 0, 0.7);
@@ -84,7 +82,6 @@ export default {
     height: auto;
     display: flex;
     flex-direction: column;
-    width: 100%;
     box-sizing: border-box;
     max-width: 350px;
     margin: 0 auto;
@@ -142,7 +139,6 @@ button {
     background-color: #008CFF;
     color: #fff;
     border: none;
-    font-size: 1rem;
     cursor: pointer;
     border-radius: 30px;
     max-width: 170px;

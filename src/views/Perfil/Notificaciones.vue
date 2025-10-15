@@ -134,7 +134,6 @@ const cancelar = () => {
 }
 
 h3 {
-  font-weight: bold;
   text-align: left;
   color: #008CFF;
   font-size: 1.6rem;
@@ -198,7 +197,6 @@ h3 {
   background-color: #00001d;
   color: #fff;
   box-sizing: border-box;
-  border: 1px solid #444;
 }
 
 .card textarea {

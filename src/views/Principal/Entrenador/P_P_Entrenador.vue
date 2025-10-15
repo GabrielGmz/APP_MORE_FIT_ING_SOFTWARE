@@ -34,22 +34,20 @@
 }
 
 h3 {
-  font-weight: bold;
   text-align: left;
   color: #008CFF;
   font-size: 1.6rem;
+  margin: 0 auto;
   margin-bottom: 1rem;
   font-weight: 900;
   width: 100%;
     max-width: 470px;
-    margin: 0 auto;
     box-sizing: border-box;
     
 }
 
 .cards {
   flex: 1;
-  overflow-y: auto;
   padding-bottom: 1rem;
   display: flex;
   flex-direction: column;

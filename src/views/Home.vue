@@ -92,6 +92,7 @@ main {
 }
 
 html, body {
+  background-color: #0d1117;
   margin: 0;
   padding: 0;
   height: 100vh;

@@ -10,9 +10,16 @@ export default defineConfig({
     vue(),
     vueDevTools(),
   ],
+  test: {
+    coverage: {
+      reporter: ['lcov', 'text'],
+      reportsDirectory: './coverage'
+    }
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
-    },
-  },
+    }
+  }
 })
+

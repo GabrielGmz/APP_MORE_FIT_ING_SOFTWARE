@@ -15,7 +15,6 @@ import DiaPecho from "@/views/Perfil/DiaPecho.vue";
 import PantallaPrincipal from "@/views/Principal/Admin/PantallaPrincipal.vue";
 import Perfil_U from "@/views/Perfil/Perfil_U.vue";
 import A_Rutina from "@/views/Principal/Entrenador/A_Rutina.vue";
-import Rutinas from "@/views/Principal/Entrenador/Rutinas.vue";
 import Rutina_view from "@/views/Principal/Cliente/Rutina_view.vue";
 import P_Banca from "@/views/Principal/Ejercicios/P_Banca.vue";
 import P_Banca_Plana from "@/views/Principal/Ejercicios/P_Banca_Plana.vue";
@@ -33,6 +32,7 @@ import G_Usuarios from "@/views/Principal/Entrenador/G_Usuarios.vue";
 import P_P_Entrenador from "@/views/Principal/Entrenador/P_P_Entrenador.vue";
 import P_Principal_C from "@/views/Principal/Cliente/P_Principal_C.vue";
 import Ver_Progreso from "@/views/Principal/Entrenador/Ver_Progreso.vue";
+import Rutinas_C from "@/views/Principal/Cliente/Rutinas_C.vue";
 
 const routes = [
   { path: "/", name: "Home", component: Home },
@@ -108,7 +108,12 @@ const routes = [
     path: "/Ver_Progreso",
     name: "Ver_Progreso",
     component: Ver_Progreso,
-  }
+  },
+  {
+    path: "/Rutinas_C",
+    name: "Rutinas_C",
+    component: Rutinas_C,
+  },
 ];
 
 const router = createRouter({

@@ -32,7 +32,7 @@ INCLINADO</h3>
 <script setup>
 import { ref } from 'vue';
 import { db, auth } from '@/firebase';
-import { doc, updateDoc, onSnapshot } from 'firebase/firestore';
+import { doc, updateDoc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useRouter } from 'vue-router';
 const router = useRouter();

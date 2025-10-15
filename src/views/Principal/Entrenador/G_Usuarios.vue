@@ -249,10 +249,10 @@ onMounted(cargarUsuarios)
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  margin: 0 auto;
   margin-bottom: 1rem;
   width: 100%;
   max-width: 220px;
-  margin: 0 auto;
   padding-bottom: 15px;
 }
 

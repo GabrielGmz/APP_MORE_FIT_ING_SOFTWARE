@@ -36,10 +36,13 @@ async function enviarVerificacion() {
         botonDeshabilitado.value = false
       }
     }, 1000)
-  } catch (error) {
-    mensaje.value = 'Error al enviar el correo de verificación.'
+} finally {
+    setTimeout(() => {
+      mensaje.value = ''
+    }, 10000)
   }
 }
+
 </script>
 
 <style scoped>

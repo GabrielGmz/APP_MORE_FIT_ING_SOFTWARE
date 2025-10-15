@@ -33,10 +33,14 @@ Tu respuesta debe ser solamente el HTML con el SVG. Nada más.
 
   const data = await res.json()
 
-  if (!data.candidates || !data.candidates.length) {
+  if (!data?.candidates?.length) {
     throw new Error('No se recibió respuesta del modelo')
   }
 
-  const respuesta = data.candidates[0].content.parts[0].text
+  const respuesta = data?.candidates?.[0]?.content?.parts?.[0]?.text
+  if (!respuesta) {
+    throw new Error('Respuesta inválida del modelo')
+  }
+
   return respuesta
 }

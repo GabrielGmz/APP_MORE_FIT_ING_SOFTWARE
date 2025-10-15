@@ -19,11 +19,7 @@
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
-}
-
-/* semantic color variables for this project */
-:root {
-  --color-background: var(--vt-c-white);
+    --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
   --color-background-mute: var(--vt-c-white-mute);
 
@@ -34,6 +30,13 @@
   --color-text: var(--vt-c-text-light-1);
 
   --section-gap: 160px;
+
+  --bg-dark: #0d1117;
+  --bg-card: #161b22;
+  --text-color: #e6edf3;
+  --text-muted: #8b949e;
+  --primary: #1f6feb;
+  --accent: gold;
 }
 
 @media (prefers-color-scheme: dark) {

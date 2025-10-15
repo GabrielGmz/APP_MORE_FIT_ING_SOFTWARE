@@ -279,6 +279,7 @@ input {
 }
 
 button[type="submit"] {
+  margin: 0 auto;
   margin-top: 1rem;
   padding: 0.8rem;
   font-size: 1rem;
@@ -290,8 +291,7 @@ button[type="submit"] {
   cursor: pointer;
   transition: background-color 0.3s ease;
   width: 100%;
-    max-width: 250px;
-    margin: 0 auto;
+  max-width: 250px;
 }
 
 button[type="submit"]:hover {

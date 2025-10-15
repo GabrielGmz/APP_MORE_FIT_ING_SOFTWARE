@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { db, auth } from '@/firebase'
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore'

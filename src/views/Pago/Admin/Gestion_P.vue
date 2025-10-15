@@ -227,14 +227,12 @@ const pagosPendientes = [
 }
 
 h2 {
-    font-weight: bold;
     text-align: left;
      color: #008CFF;
     font-weight: 900;
 }
 
 h3 {
-    font-weight: bold;
     text-align: center;
     color: #ffffff;
     font-size: 18px;
@@ -467,8 +465,8 @@ th:last-child {
 .card {
     position: relative;
     padding: 1rem;
-    margin-bottom: 1rem;
     margin: 5px;
+    margin-bottom: 1rem;
     background: rgb(0, 0, 0);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.1);

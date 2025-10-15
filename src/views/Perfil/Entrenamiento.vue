@@ -166,7 +166,6 @@ async function completarDia(dia) {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: black;
   color: white;
   background-color: #000a12;
   background-size: cover;

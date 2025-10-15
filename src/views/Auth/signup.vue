@@ -147,7 +147,6 @@ button {
     background-color: #008CFF;
     color: #fff;
     border: none;
-    font-size: 1rem;
     cursor: pointer;
     border-radius: 20px;
     max-width: 170px;

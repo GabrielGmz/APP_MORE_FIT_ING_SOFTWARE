@@ -284,10 +284,10 @@ onMounted(cargarUsuarios)
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  margin: 0 auto;
   margin-bottom: 1rem;
   width: 100%;
   max-width: 220px;
-  margin: 0 auto;
   padding-bottom: 15px;
 }
 
@@ -326,6 +326,7 @@ onMounted(cargarUsuarios)
   background-color: rgba(35, 35, 35, 0.5);
   backdrop-filter: blur(6px);
   display: flex;
+  margin: 0 auto;
   justify-content: space-around;
   align-items: center;
   padding: 1rem 0;
@@ -336,7 +337,6 @@ onMounted(cargarUsuarios)
   left: 0;
   width: 100%;
   max-width: 470px;
-  margin: 0 auto;
 }
 
 .nav-btn {

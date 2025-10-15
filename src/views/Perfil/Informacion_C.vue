@@ -143,7 +143,6 @@ onMounted(cargarUsuario)
 }
 
 h2 {
-  font-weight: bold;
   text-align: left;
   color: #00bfff;
   font-size: 1.6rem;

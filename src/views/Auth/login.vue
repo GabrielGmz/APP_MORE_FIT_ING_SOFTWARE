@@ -38,6 +38,60 @@ const password = ref('')
 const error = ref(null)
 const router = useRouter()
 
+const showSuccessMessage = () => {
+  error.value = null
+  const successMsg = document.createElement('div')
+  successMsg.textContent = 'Inicio de sesión exitoso ✅'
+  successMsg.style.position = 'fixed'
+  successMsg.style.top = '30px'
+  successMsg.style.left = '50%'
+  successMsg.style.transform = 'translateX(-50%)'
+  successMsg.style.background = '#008CFF'
+  successMsg.style.color = '#fff'
+  successMsg.style.padding = '16px 32px'
+  successMsg.style.borderRadius = '8px'
+  successMsg.style.fontWeight = 'bold'
+  successMsg.style.fontSize = '18px'
+  successMsg.style.zIndex = '9999'
+  document.body.appendChild(successMsg)
+  setTimeout(() => {
+    document.body.removeChild(successMsg)
+  }, 1300)
+}
+
+const redirectByProfile = (perfil) => {
+  if (perfil.rol === 'admin') {
+    router.push('/PantallaPrincipal')
+    return
+  }
+  if (perfil.rol === 'entrenador') {
+    router.push('/P_P_Entrenador')
+    return
+  }
+  if (!perfil.rol) {
+    router.push('/P_Principal_C')
+    return
+  }
+
+  const camposCompletos = perfil.nombre && perfil.apellido && perfil.edad && perfil.altura && perfil.peso && perfil.sexo
+
+  if (camposCompletos) {
+    router.push('/PantallaPrincipal')
+  } else {
+    router.push('/Completar_P')
+  }
+}
+
+const handleAuthError = (err) => {
+  if (err.code === 'auth/user-not-found') {
+    error.value = 'Usuario no encontrado'
+  } else if (err.code === 'auth/wrong-password') {
+    error.value = 'Contraseña incorrecta'
+  } else {
+    error.value = 'Error: ' + err.message
+  }
+}
+
 const login = async () => {
   try {
     error.value = null
@@ -52,60 +106,17 @@ const login = async () => {
     const docRef = doc(db, 'usuarios', user.uid)
     const docSnap = await getDoc(docRef)
 
-    error.value = null
-    const successMsg = document.createElement('div')
-    successMsg.textContent = 'Inicio de sesión exitoso ✅'
-    successMsg.style.position = 'fixed'
-    successMsg.style.top = '30px'
-    successMsg.style.left = '50%'
-    successMsg.style.transform = 'translateX(-50%)'
-    successMsg.style.background = '#008CFF'
-    successMsg.style.color = '#fff'
-    successMsg.style.padding = '16px 32px'
-    successMsg.style.borderRadius = '8px'
-    successMsg.style.fontWeight = 'bold'
-    successMsg.style.fontSize = '18px'
-    successMsg.style.zIndex = '9999'
-    document.body.appendChild(successMsg)
-    setTimeout(() => {
-      document.body.removeChild(successMsg)
-    }, 1300)
+    showSuccessMessage()
 
     if (docSnap.exists()) {
       const perfil = docSnap.data()
-
-      // Redirección según rol
-      if (perfil.rol === 'admin') {
-        router.push('/PantallaPrincipal')
-        return
-      } else if (perfil.rol === 'entrenador') {
-        router.push('/P_P_Entrenador')
-        return
-      } else if (!perfil.rol) {
-        router.push('/P_Principal_C')
-        return
-      }
-
-      const camposCompletos = perfil.nombre && perfil.apellido && perfil.edad && perfil.altura && perfil.peso && perfil.sexo
-
-      if (camposCompletos) {
-        router.push('/PantallaPrincipal')
-      } else {
-        router.push('/Completar_P')
-      }
-
-    } else {
-      router.push('/Completar_P')
+      redirectByProfile(perfil)
+      return
     }
 
+    router.push('/Completar_P')
   } catch (err) {
-    if (err.code === 'auth/user-not-found') {
-      error.value = 'Usuario no encontrado'
-    } else if (err.code === 'auth/wrong-password') {
-      error.value = 'Contraseña incorrecta'
-    } else {
-      error.value = 'Error: ' + err.message
-    }
+    handleAuthError(err)
   }
 }
 
@@ -173,7 +184,6 @@ button {
   background-color: #008CFF;
   color: #fff;
   border: none;
-  font-size: 1rem;
   cursor: pointer;
   border-radius: 20px;
   max-width: 170px;

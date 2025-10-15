@@ -100,7 +100,6 @@ onAuthStateChanged(auth, async (user) => {
 }
 
 h2 {
-    font-weight: bold;
     text-align: left;
      color: #008CFF;
     font-size: 1.6rem;
