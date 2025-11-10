@@ -3,7 +3,7 @@
         <h3>Configuración</h3>
 
         <div class="cards">
-            <button class="card" @click="$router.push('/Notificaciones')">
+            <button class="card" @click="$router.push('/Notificaciones_C')">
                 <h4>Notificaciones</h4>
                 <p>Configura alertas y avisos dentro de la app</p>
             </button>
@@ -60,14 +60,71 @@
 <script setup>
 import { getAuth, signOut } from 'firebase/auth'
 const auth = getAuth()
-const logout = async () => {
-    try {
+
+const logout = () => {
+  // Use native <dialog> if available for a lightweight modal
+  if (typeof HTMLDialogElement === 'function') {
+    if (document.getElementById('logout-confirm-dialog')) return // avoid duplicates
+
+    const dialog = document.createElement('dialog')
+    dialog.id = 'logout-confirm-dialog'
+    dialog.style.border = 'none'
+    dialog.style.background = '#06111a'
+    dialog.style.color = '#fff'
+    dialog.style.padding = '1.2rem'
+    dialog.style.borderRadius = '12px'
+    dialog.innerHTML = `
+      <form method="dialog" style="display:flex;flex-direction:column;gap:0.8rem;min-width:260px">
+        <div style="display:flex;flex-direction:column;gap:0.2rem">
+          <strong style="color:#008CFF">Confirmar cierre de sesión</strong>
+          <span>¿Estás seguro que deseas cerrar sesión?</span>
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:0.5rem;margin-top:0.6rem">
+          <button id="logout-cancel" type="button" style="background:#333;color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer">Cancelar</button>
+          <button id="logout-confirm" type="button" style="background:red;color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer">Cerrar sesión</button>
+        </div>
+      </form>
+    `
+    document.body.appendChild(dialog)
+
+    const btnCancel = dialog.querySelector('#logout-cancel')
+    const btnConfirm = dialog.querySelector('#logout-confirm')
+
+    const clean = () => {
+      try { dialog.close() } catch {}
+      dialog.remove()
+    }
+
+    btnCancel.addEventListener('click', clean)
+
+    btnConfirm.addEventListener('click', async () => {
+      btnConfirm.disabled = true
+      btnCancel.disabled = true
+      try {
         await signOut(auth)
         console.log('Usuario ha cerrado sesión')
         window.location.href = '/login'
-    } catch (error) {
+      } catch (error) {
         console.error('Error al cerrar sesión:', error)
-    }
+      } finally {
+        clean()
+      }
+    })
+
+    dialog.showModal()
+  } else {
+    // Fallback to built-in confirm dialog
+    const ok = window.confirm('¿Estás seguro que deseas cerrar sesión?')
+    if (!ok) return
+    signOut(auth)
+      .then(() => {
+        console.log('Usuario ha cerrado sesión')
+        window.location.href = '/login'
+      })
+      .catch((error) => {
+        console.error('Error al cerrar sesión:', error)
+      })
+  }
 }
 </script>
 
@@ -167,7 +224,7 @@ h3 {
     bottom: 0;
     left: 0;
     width: 100%;
-    max-width: 470px;
+    max-width: 430px;
     margin: 0 auto;
 }
 

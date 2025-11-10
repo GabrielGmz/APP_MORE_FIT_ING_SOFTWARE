@@ -11,9 +11,16 @@ export default defineConfig({
     vueDevTools(),
   ],
   test: {
+    globals: true,
+    environment: 'jsdom',
     coverage: {
+      provider: 'v8',
       reporter: ['lcov', 'text'],
-      reportsDirectory: './coverage'
+      reportsDirectory: './coverage',
+      include: ['src/**/*.vue', 'src/**/*.js'],
+      clean: true,
+      all: true,
+      exclude: ['node_modules/', 'tests/', 'src/main.js', 'src/router/index.js']
     }
   },
   resolve: {

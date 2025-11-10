@@ -1,0 +1,1 @@
+< 2jsX¾hr*src/views/Principal/Entrenador/Rutinas.vue

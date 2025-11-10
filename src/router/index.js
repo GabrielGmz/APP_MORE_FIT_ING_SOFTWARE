@@ -33,6 +33,17 @@ import P_P_Entrenador from "@/views/Principal/Entrenador/P_P_Entrenador.vue";
 import P_Principal_C from "@/views/Principal/Cliente/P_Principal_C.vue";
 import Ver_Progreso from "@/views/Principal/Entrenador/Ver_Progreso.vue";
 import Rutinas_C from "@/views/Principal/Cliente/Rutinas_C.vue";
+import Configuracion_C from "@/views/Principal/Cliente/Configuracion_C.vue";
+import Notificaciones_C from "@/views/Perfil/Notificaciones_C.vue";
+import Membresias_C from "@/views/Pago/Cliente/Membresias_C.vue";
+import Configuracion_E from "@/views/Principal/Entrenador/Configuracion_E.vue";
+import Informacion_E from "@/views/Perfil/Informacion_E.vue";
+import Notificaciones_E from "@/views/Perfil/Notificaciones_E.vue";
+import Perfil_U_C from "@/views/Perfil/Perfil_U_C.vue";
+import Perfil_U_E from "@/views/Perfil/Perfil_U_E.vue";
+import Completar_P_C from "@/views/Perfil/Completar_P_C.vue";
+import Completar_P_E from "@/views/Perfil/Completar_P_E.vue";
+import P_Nutricion_C from "@/views/Principal/Cliente/P_Nutricion_C.vue";
 
 const routes = [
   { path: "/", name: "Home", component: Home },
@@ -114,6 +125,61 @@ const routes = [
     name: "Rutinas_C",
     component: Rutinas_C,
   },
+  {
+    path: "/Configuracion_C",
+    name: "Configuracion_C",
+    component: Configuracion_C,
+  },
+  {
+    path: "/Notificaciones_C",
+    name: "Notificaciones_C",
+    component: Notificaciones_C,
+  },
+  {
+    path: "/Membresias_C",
+    name: "Membresias_C",
+    component: Membresias_C,
+  },
+  {
+    path: "/Configuracion_E",
+    name: "Configuracion_E",
+    component: Configuracion_E,
+  },
+  {
+    path: "/Informacion_E",
+    name: "Informacion_E",
+    component: Informacion_E,
+  },
+  {
+    path: "/Notificaciones_E",
+    name: "Notificaciones_E",
+    component: Notificaciones_E,
+  },
+  {
+    path: "/Perfil_U_C",
+    name: "Perfil_U_C",
+    component: Perfil_U_C,
+  },
+  {
+    path: "/Perfil_U_E",
+    name: "Perfil_U_E",
+    component: Perfil_U_E,
+  },
+  {
+    path: "/Completar_P_C",
+    name: "Completar_P_C",
+    component: Completar_P_C,
+  },
+  {
+    path: "/Completar_P_E",
+    name: "Completar_P_E",
+    component: Completar_P_E,
+  },
+  {
+    path: "/P_Nutricion_C",
+    name: "P_Nutricion_C",
+    component: P_Nutricion_C,
+  }
 ];
 
 const router = createRouter({

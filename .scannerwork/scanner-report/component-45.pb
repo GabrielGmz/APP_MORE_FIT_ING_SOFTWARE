@@ -1,0 +1,1 @@
+- 2jsX«hr+src/views/Principal/Admin/Configuracion.vue

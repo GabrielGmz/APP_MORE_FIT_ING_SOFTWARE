@@ -1,0 +1,1 @@
+$ 2jsX“hr"src/views/Perfil/Informacion_C.vue

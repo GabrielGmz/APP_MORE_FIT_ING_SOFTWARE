@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <header class="header">
-      <h1>Rutinas</h1>
-      <div class="filters">
+    <h1>Rutinas</h1>
+  <header class="header">
+    <div class="filters">
         <input v-model="search" placeholder="Buscar rutina..." />
         <select v-model="selectedLevel">
           <option value="all">Todos</option>
@@ -10,11 +10,11 @@
           <option value="intermediate">Intermedio</option>
           <option value="advanced">Avanzado</option>
         </select>
-      </div>
+    </div>
     </header>
 
-    <section class="sections">
-      <div class="section" v-for="group in groupedLevels" :key="group.key">
+    <section class="section">
+      <div class="sec" v-for="group in groupedLevels" :key="group.key">
         <h2>{{ group.label }}</h2>
         <div class="routines-grid">
           <article @click="openRoutine(routine)" v-for="routine in filteredByLevel(group.key)" :key="routine.id"
@@ -26,16 +26,14 @@
         </div>
       </div>
 
-      <div class="section">
         <h2>Rutinas sugeridas por tu entrenador</h2>
         <div class="routines-grid">
-          <article v-for="rutina in trainerSuggested" :key="rutina.id" class="routine-card"
-            @click="openRoutine(rutina)">
+          <article v-for="rutina in filteredTrainerSuggested" :key="rutina.id" class="routine-card"
+         @click="openRoutine(rutina)">
             <h3>{{ rutina.titulo }}</h3>
             <p>{{ rutina.dificultad }}</p>
           </article>
         </div>
-      </div>
     </section>
 
     <div v-if="activeRoutine" class="modal" @click.self="closeRoutine">
@@ -80,7 +78,7 @@
           d="M1004.5 556.5Q985 576 957.5 576T911 557l-15-15v419q0 26-18.5 45t-45.5 19H640V737q0-13-9.5-22.5T608 705H416q-13 0-22.5 9.5T384 737v288H192q-27 0-45.5-19T128 961V542l-15 15q-19 19-46.5 19t-47-19.5t-19.5-47T19 463L463 19q20-20 49-19q29-1 49 19l444 444q19 19 19 46.5t-19.5 47z" />
       </svg>
     </button>
-    <button class="nav-btn" @click="$router.push('/Perfil_U')">
+    <button class="nav-btn" @click="$router.push('/Perfil_U_C')">
       <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24">
         <path fill="currentColor" fill-rule="evenodd"
           d="M5 8a4 4 0 1 1 7.8 1.3l-2.5 2.5A4 4 0 0 1 5 8m4 5H7a4 4 0 0 0-4 4v1c0 1.1.9 2 2 2h2.2a3 3 0 0 1-.1-1.6l.6-3.4a3 3 0 0 1 .9-1.5zm9-5a3 3 0 0 0-2 .9l-6 6a1 1 0 0 0-.3.5L9 18.8a1 1 0 0 0 1.2 1.2l3.4-.7c.2 0 .3-.1.5-.3l6-6a3 3 0 0 0-2-5Z"
@@ -160,16 +158,39 @@ const activeRoutine = ref(null);
 const routines = ref([
   {
     id: 1,
-    title: "Rutina de calentamiento",
+    title: "Antes de entrenar",
     level: "beginner",
     duration: "15 Min",
     description: "",
+    ejercicios: [
+      { nombre: "1. Movilidad (4 min)", repeticiones: "Rotar cuello, hombros, cadera, rodillas y tobillos." },
+      { nombre: "2. Cardio ligero (5 min)", repeticiones: "Jumping jacks, Rodillas al pecho, Talones al glúteo, Saltos laterales" },
+      { nombre: "3. Activación (4 min)", repeticiones: "2 minutos" },
+      { nombre: "4. Estiramiento (2 min)", repeticiones: "Balanceo de piernas, Rotación de tronco, Inclinaciones laterales" },
+    ],
   },
 ]);
 
 
 // Rutinas sugeridas por el entrenador (cargadas dinámicamente)
 const trainerSuggested = ref([]);
+
+const filteredTrainerSuggested = computed(() => {
+  const q = search.value.toLowerCase().trim();
+  return trainerSuggested.value.filter((r) => {
+    // Nivel: si selectedLevel es 'all' pasa todo, si no, solo los que coincidan
+    const matchesLevel =
+      selectedLevel.value === "all" || r.dificultad === selectedLevel.value;
+    
+    // Búsqueda: en titulo o dificultad
+    const matchesSearch =
+      q === "" ||
+      r.titulo.toLowerCase().includes(q) ||
+      r.dificultad.toLowerCase().includes(q);
+
+    return matchesLevel && matchesSearch;
+  });
+});
 
 // Agrupación por niveles para mostrar secciones
 const groupedLevels = [{ key: "beginner", label: "Instrucciones" }];
@@ -203,11 +224,6 @@ function openRoutine(routine) {
 function closeRoutine() {
   activeRoutine.value = null;
   document.body.style.overflow = ""; // Restaura scroll
-}
-
-// Marcar o desmarcar rutina como favorita
-function toggleFavorite(routine) {
-  routine.fav = !routine.fav;
 }
 </script>
 
@@ -249,14 +265,34 @@ body {
   padding-bottom: 10px;
 }
 
-.header h1 {
+.container h1 {
   font-size: 28px;
   color: #0059ff;
+  text-align: left;
+  width: 100%; 
+}
+
+.objetives {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+}
+
+.objetives button {
+  background: #0059ff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
 .filters {
   display: flex;
   gap: 10px;
+  width: 100%;
+  justify-content: right;
 }
 
 .filters input,
@@ -272,10 +308,21 @@ body {
   color: #8b949e;
 }
 
-.sections {
+section {
   display: flex;
   flex-direction: column;
   gap: 40px;
+  overflow-y: auto;
+  max-height: calc(100vh - 220px);
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+
+  /* Hide native scrollbars but keep scrolling functional */
+  /* Firefox */
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+  /* IE/Edge */
+  -ms-overflow-style: none;
 }
 
 .section h2 {
@@ -288,8 +335,9 @@ body {
 
 .routines-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat();
   gap: 20px;
+  padding-bottom: 40px;
 }
 
 .routine-card {
@@ -304,6 +352,9 @@ body {
   text-align: center;
   align-items: center;
   text-transform: uppercase;
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
 }
 
 .btn_close>svg {
@@ -317,7 +368,7 @@ body {
 
 .routine-card h3 {
   color: #ffffff;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .routine-card p {
@@ -370,7 +421,7 @@ body {
   background: #161b22;
   padding: 20px;
   border-radius: 10px;
-  max-width: 400px;
+  max-width: 330px;
   width: 100%;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   color: #c9d1d9;
@@ -418,7 +469,7 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  max-width: 470px;
+  max-width: 430px;
   margin: 0 auto;
 }
 

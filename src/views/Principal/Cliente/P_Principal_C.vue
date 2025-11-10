@@ -3,7 +3,7 @@
     <h3>+ FIT</h3>
     <div class="cards">
       <button class="card" @click="$router.push('/Rutinas_C')">RUTINAS</button>
-      <button class="card" @click="$router.push('/Plan_N_C')">PLAN NUTRICIONAL</button>
+      <button class="card" @click="$router.push('/P_Nutricion_C')">PLAN NUTRICIONAL</button>
     </div>
 
     <nav class="bottom-nav">
@@ -105,7 +105,7 @@ h3 {
   bottom: 0;
   left: 0;
     width: 100%;
-  max-width: 470px;
+  max-width: 430px;
     margin: 0 auto;
 }
 

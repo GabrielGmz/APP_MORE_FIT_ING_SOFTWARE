@@ -1,0 +1,1 @@
+3 2jsXkhr+src/views/Principal/Cliente/Rutina_view.vue

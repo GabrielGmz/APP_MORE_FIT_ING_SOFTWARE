@@ -1,0 +1,1 @@
+6 2jsX_hr*src/views/Principal/Ejercicios/P_Banca.vue

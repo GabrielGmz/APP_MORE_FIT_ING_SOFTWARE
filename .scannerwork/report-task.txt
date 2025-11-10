@@ -1,0 +1,6 @@
+projectKey=More_FIT
+serverUrl=http://localhost:9000
+serverVersion=25.9.0.112764
+dashboardUrl=http://localhost:9000/dashboard?id=More_FIT
+ceTaskId=58964bd1-36e0-4e1e-a78c-37e4d378f525
+ceTaskUrl=http://localhost:9000/api/ce/task?id=58964bd1-36e0-4e1e-a78c-37e4d378f525

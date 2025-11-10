@@ -1,0 +1,1 @@
+ 2jsXˆhr"src/views/Pago/Admin/Gestion_P.vue

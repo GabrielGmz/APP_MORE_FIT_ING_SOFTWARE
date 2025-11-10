@@ -1,0 +1,1 @@
+7 2jsXmhr0src/views/Principal/Ejercicios/P_Banca_Plana.vue

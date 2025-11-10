@@ -147,8 +147,6 @@ async function guardarPerfil() {
 
     if (esEdicion.value) {
       router.push('/Perfil_U')           // si estaba editando
-    } else {
-      router.push('/PantallaPrincipal')  // si era un nuevo perfil
     }
   } catch (error) {
     console.error('Error al guardar el perfil:', error)
