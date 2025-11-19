@@ -37,7 +37,7 @@
 h3 {
   text-align: left;
   color: #008CFF;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   margin: 0 auto;
   margin-bottom: 1rem;
   font-weight: 900;
@@ -65,11 +65,10 @@ h3 {
   max-width: 400px;
   height: 120px;
   padding: 1rem;
-  padding-left: 60px;
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(86, 86, 86, 0.15);
   backdrop-filter: blur(2px);
   color: white;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 1.5rem;
   font-size: 22px;
   font-weight: bold;
@@ -93,29 +92,27 @@ h3 {
 }
 
 .bottom-nav {
-  background-color: rgba(35, 35, 35, 0.5);
-  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0); /* Semi-transparente oscuro */
+  backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 1rem 0;
-  border-top-left-radius: 1.5rem;
-  border-top-right-radius: 1.5rem;
-  position: sticky;
+  position: fixed;
   bottom: 0;
   left: 0;
-    width: 100%;
-  max-width: 470px;
-    margin: 0 auto;
+  width: 100%;
+  border-top: 1px solid #585b5ea0;
+  z-index: 100;
 }
 
 .nav-btn {
   background: none;
   border: none;
-  color: white;
-  font-size: 1.6rem;
+  color: #8b949e;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
+  padding: 5px;
 }
 .nav-btn:hover {
   color: #008CFF;

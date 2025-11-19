@@ -25,6 +25,7 @@ import Membresias from "@/views/Pago/Admin/Membresias.vue";
 import Configuracion from "@/views/Principal/Admin/Configuracion.vue";
 import Gestion_U from "@/views/Principal/Admin/Gestion_U.vue";
 import V_Perfil_U from "@/views/Perfil/V_Perfil_U.vue";
+import Informacion from "@/views/Perfil/Informacion.vue";
 import Informacion_C from "@/views/Perfil/Informacion_C.vue";
 import Notificaciones from "@/views/Perfil/Notificaciones.vue";
 import A_P_Nutricion from "@/views/Principal/Entrenador/A_P_Nutricion.vue";
@@ -44,6 +45,10 @@ import Perfil_U_E from "@/views/Perfil/Perfil_U_E.vue";
 import Completar_P_C from "@/views/Perfil/Completar_P_C.vue";
 import Completar_P_E from "@/views/Perfil/Completar_P_E.vue";
 import P_Nutricion_C from "@/views/Principal/Cliente/P_Nutricion_C.vue";
+import Info_Salud from "@/views/Perfil/Info_Salud.vue";
+import Faqs from "@/views/Principal/Cliente/Faqs.vue";
+import Chat_C from "@/views/Principal/Chat_C.vue";
+import Chat_Privado from "@/views/Principal/Chat_Privado.vue";
 
 const routes = [
   { path: "/", name: "Home", component: Home },
@@ -179,7 +184,32 @@ const routes = [
     path: "/P_Nutricion_C",
     name: "P_Nutricion_C",
     component: P_Nutricion_C,
-  }
+  },
+  {
+    path: "/Info_Salud",
+    name: "Info_Salud",
+    component: Info_Salud,
+  },
+  {
+    path: "/Informacion",
+    name: "Informacion",
+    component: Informacion,
+  },
+  {
+    path: "/Faqs",
+    name: "Faqs",
+    component: Faqs,
+  },
+  {
+    path: "/Chat_C",
+    name: "Chat_C",
+    component: Chat_C,
+  },
+  {
+    path: "/Chat_Privado/:id",
+    name: "Chat_Privado",
+    component: Chat_Privado,
+  },
 ];
 
 const router = createRouter({
